@@ -1,0 +1,43 @@
+*{-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif}
+html[dir="rtl"] body{font-family:'Tajawal',sans-serif}
+
+.grad-main{background:linear-gradient(135deg,#F97316,#22C55E)}
+.grad-hero{background:linear-gradient(135deg,#0F172A 0%,#1a1a2e 40%,#16213e 100%)}
+.grad-dark{background:linear-gradient(135deg,#0F172A,#1E293B,#0F172A)}
+
+.glow-o{box-shadow:0 0 30px rgba(249,115,22,0.3),0 0 60px rgba(249,115,22,0.1)}
+.glow-g{box-shadow:0 0 30px rgba(34,197,94,0.3),0 0 60px rgba(34,197,94,0.1)}
+.glow-o-sm{box-shadow:0 0 15px rgba(249,115,22,0.25)}
+.glow-g-sm{box-shadow:0 0 15px rgba(34,197,94,0.25)}
+.text-glow-o{text-shadow:0 0 25px rgba(249,115,22,0.5)}
+.text-glow-g{text-shadow:0 0 25px rgba(34,197,94,0.5)}
+
+.glass{background:rgba(255,255,255,0.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.12)}
+.glass-l{background:rgba(255,255,255,0.7);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.3)}
+
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes pulse-glow{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.7;transform:scale(1.04)}}
+@keyframes slide-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.floaty{animation:floaty 4s ease-in-out infinite}
+.floaty-d{animation:floaty 5s ease-in-out infinite 1s}
+.pulse-g{animation:pulse-glow 3s ease-in-out infinite}
+.slide-up{animation:slide-up .6s ease-out forwards}
+
+.scard{transition:all .35s cubic-bezier(.4,0,.2,1)}
+.scard:hover{transform:translateY(-6px)}
+
+.dot-bg{background-image:radial-gradient(circle,rgba(249,115,22,.06) 1px,transparent 1px);background-size:28px 28px}
+.dark .dot-bg{background-image:radial-gradient(circle,rgba(249,115,22,.03) 1px,transparent 1px)}
+
+.no-sb::-webkit-scrollbar{display:none}
+.no-sb{-ms-overflow-style:none;scrollbar-width:none}
+details>summary::-webkit-details-marker{display:none}
+details summary{list-style:none}
+
+#aiPanel{display:none;opacity:0;transform:translateY(10px) scale(.95);transition:all .3s cubic-bezier(.4,0,.2,1)}
+#aiPanel.show{display:block;opacity:1;transform:translateY(0) scale(1)}
+
+.mob-menu{left:0;right:auto;transform:translateX(-100%);transition:transform .3s ease}
+html[dir="rtl"] .mob-menu{left:auto;right:0;transform:translateX(100%)}
+.mob-menu.open{transform:translateX(0)!important}
