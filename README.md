@@ -1,1 +1,719 @@
-# bank-ahlly
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlAhli Bank | Your Trusted Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        ar: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *{-webkit-font-smoothing:antialiased}
+        body{font-family:'Inter',sans-serif}
+        html[dir="rtl"] body{font-family:'Tajawal',sans-serif}
+
+        .grad-main{background:linear-gradient(135deg,#F97316,#22C55E)}
+        .grad-hero{background:linear-gradient(135deg,#0F172A 0%,#1a1a2e 40%,#16213e 100%)}
+        .grad-dark{background:linear-gradient(135deg,#0F172A,#1E293B,#0F172A)}
+
+        .glow-o{box-shadow:0 0 30px rgba(249,115,22,0.3),0 0 60px rgba(249,115,22,0.1)}
+        .glow-g{box-shadow:0 0 30px rgba(34,197,94,0.3),0 0 60px rgba(34,197,94,0.1)}
+        .glow-o-sm{box-shadow:0 0 15px rgba(249,115,22,0.25)}
+        .glow-g-sm{box-shadow:0 0 15px rgba(34,197,94,0.25)}
+        .text-glow-o{text-shadow:0 0 25px rgba(249,115,22,0.5)}
+        .text-glow-g{text-shadow:0 0 25px rgba(34,197,94,0.5)}
+
+        .glass{background:rgba(255,255,255,0.08);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.12)}
+        .glass-l{background:rgba(255,255,255,0.7);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.3)}
+
+        @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+        @keyframes pulse-glow{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.7;transform:scale(1.04)}}
+        @keyframes slide-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        .floaty{animation:floaty 4s ease-in-out infinite}
+        .floaty-d{animation:floaty 5s ease-in-out infinite 1s}
+        .pulse-g{animation:pulse-glow 3s ease-in-out infinite}
+        .slide-up{animation:slide-up .6s ease-out forwards}
+
+        .scard{transition:all .35s cubic-bezier(.4,0,.2,1)}
+        .scard:hover{transform:translateY(-6px)}
+
+        .dot-bg{background-image:radial-gradient(circle,rgba(249,115,22,.06) 1px,transparent 1px);background-size:28px 28px}
+        .dark .dot-bg{background-image:radial-gradient(circle,rgba(249,115,22,.03) 1px,transparent 1px)}
+
+        .no-sb::-webkit-scrollbar{display:none}
+        .no-sb{-ms-overflow-style:none;scrollbar-width:none}
+        details>summary::-webkit-details-marker{display:none}
+        details summary{list-style:none}
+
+        #aiPanel{display:none;opacity:0;transform:translateY(10px) scale(.95);transition:all .3s cubic-bezier(.4,0,.2,1)}
+        #aiPanel.show{display:block;opacity:1;transform:translateY(0) scale(1)}
+
+        .mob-menu{transform:translateX(-100%);transition:transform .3s ease}
+        html[dir="rtl"] .mob-menu{transform:translateX(100%)}
+        .mob-menu.open{transform:translateX(0)!important}
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700 dark:bg-slate-950 dark:text-slate-300 transition-colors duration-500">
+
+    <!-- ===== NAVBAR ===== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 h-[72px] bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-500">
+        <div class="max-w-7xl mx-auto h-full px-4 md:px-6 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-xl grad-main flex items-center justify-center glow-o-sm">
+                    <iconify-icon icon="lucide:landmark" class="text-white text-xl"></iconify-icon>
+                </div>
+                <div>
+                    <span class="font-bold text-slate-900 dark:text-white text-base leading-tight block tr" data-t-en="AlAhli Bank" data-t-ar="البنك الأهلي">AlAhli Bank</span>
+                    <span class="text-[10px] text-slate-400 tracking-widest uppercase font-medium">Since 1953</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-1">
+                <a href="#services" class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-orange-500 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-500/5 transition-all tr" data-t-en="Services" data-t-ar="الخدمات">Services</a>
+                <a href="#features" class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-orange-500 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-500/5 transition-all tr" data-t-en="Features" data-t-ar="المميزات">Features</a>
+                <a href="#stats" class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-orange-500 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-500/5 transition-all tr" data-t-en="Statistics" data-t-ar="الإحصائيات">Statistics</a>
+                <a href="#app" class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-orange-500 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-500/5 transition-all tr" data-t-en="App" data-t-ar="التطبيق">App</a>
+                <a href="#faq" class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-orange-500 rounded-lg hover:bg-orange-50 dark:hover:bg-orange-500/5 transition-all tr" data-t-en="FAQ" data-t-ar="الأسئلة">FAQ</a>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button type="button" id="langToggle" class="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:bg-orange-50 dark:hover:bg-slate-800 transition-all" title="Language">
+                    <iconify-icon icon="lucide:languages" class="text-slate-500 dark:text-slate-400 text-base"></iconify-icon>
+                </button>
+                <button type="button" id="darkToggle" class="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:bg-orange-50 dark:hover:bg-slate-800 transition-all" title="Dark Mode">
+                    <iconify-icon icon="lucide:sun" class="text-slate-500 text-base sun-ico"></iconify-icon>
+                    <iconify-icon icon="lucide:moon" class="text-slate-400 text-base moon-ico hidden"></iconify-icon>
+                </button>
+                <a href="#" class="hidden md:inline-flex items-center gap-2 grad-main text-white text-xs font-bold px-5 py-2.5 rounded-lg glow-o-sm hover:opacity-90 transition-opacity cta-btn">
+                    <span class="tr" data-t-en="Open Account" data-t-ar="فتح حساب">Open Account</span>
+                    <iconify-icon icon="lucide:arrow-right" class="arr-ico text-sm"></iconify-icon>
+                </a>
+                <button type="button" id="mobMenuBtn" class="lg:hidden w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+                    <iconify-icon icon="lucide:menu" class="text-slate-600 dark:text-slate-300 text-lg"></iconify-icon>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobMenu" class="mob-menu fixed top-0 left-0 bottom-0 w-80 bg-white dark:bg-slate-900 z-[60] shadow-2xl pt-20 px-6">
+        <button type="button" id="mobClose" class="absolute top-5 right-5 w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center">
+            <iconify-icon icon="lucide:x" class="text-slate-600 dark:text-slate-300 text-lg"></iconify-icon>
+        </button>
+        <div class="flex flex-col gap-2">
+            <a href="#services" class="mob-link px-4 py-3 text-base font-medium text-slate-700 dark:text-slate-200 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-500/5 rounded-lg transition-all tr" data-t-en="Services" data-t-ar="الخدمات">Services</a>
+            <a href="#features" class="mob-link px-4 py-3 text-base font-medium text-slate-700 dark:text-slate-200 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-500/5 rounded-lg transition-all tr" data-t-en="Features" data-t-ar="المميزات">Features</a>
+            <a href="#stats" class="mob-link px-4 py-3 text-base font-medium text-slate-700 dark:text-slate-200 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-500/5 rounded-lg transition-all tr" data-t-en="Statistics" data-t-ar="الإحصائيات">Statistics</a>
+            <a href="#app" class="mob-link px-4 py-3 text-base font-medium text-slate-700 dark:text-slate-200 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-500/5 rounded-lg transition-all tr" data-t-en="App" data-t-ar="التطبيق">App</a>
+            <a href="#faq" class="mob-link px-4 py-3 text-base font-medium text-slate-700 dark:text-slate-200 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-500/5 rounded-lg transition-all tr" data-t-en="FAQ" data-t-ar="الأسئلة">FAQ</a>
+            <hr class="my-3 border-slate-200 dark:border-slate-700">
+            <a href="#" class="flex items-center justify-center gap-2 grad-main text-white text-sm font-bold px-6 py-3 rounded-lg cta-btn">
+                <span class="tr" data-t-en="Open Account" data-t-ar="فتح حساب">Open Account</span>
+            </a>
+        </div>
+    </div>
+    <div id="mobOverlay" class="fixed inset-0 bg-slate-900/50 z-[55] hidden backdrop-blur-sm"></div>
+
+    <!-- ===== HERO ===== -->
+    <section class="grad-hero relative overflow-hidden pt-[72px]">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-orange-500/20 rounded-full blur-[100px] pulse-g"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-green-500/15 rounded-full blur-[120px] pulse-g" style="animation-delay:1.5s"></div>
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:60px 60px"></div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-20 md:py-32 lg:py-40 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="slide-up">
+                    <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-6">
+                        <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                        <span class="text-xs text-slate-300 font-medium tr" data-t-en="Your Trusted Banking Partner Since 1953" data-t-ar="شريكك المصرفي الموثوق منذ 1953">Your Trusted Banking Partner Since 1953</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                        <span class="tr" data-t-en="Banking Made" data-t-ar="تمويلك">Banking Made</span><br>
+                        <span class="text-glow-o tr" data-t-en="Smarter" data-t-ar="أذكى">Smarter</span>
+                        <span class="inline-block bg-clip-text text-transparent grad-main tr" data-t-en=" &amp; Greener" data-t-ar=" وأخضر"> &amp; Greener</span>
+                    </h1>
+                    <p class="text-lg text-slate-400 leading-relaxed mb-8 max-w-lg tr" data-t-en="Experience next-generation banking with innovative digital solutions, unbeatable security, and a commitment to sustainable growth." data-ar="اختبر الخدمات المصرفية من الجيل التالي مع حلول رقمية مبتكرة وأمان لا يضاهى والتزام بالنمو المستدام.">Experience next-generation banking with innovative digital solutions, unbeatable security, and a commitment to sustainable growth.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="inline-flex items-center gap-2 grad-main text-white font-bold px-8 py-4 rounded-xl glow-o hover:opacity-90 transition-all shadow-2xl cta-btn">
+                            <span class="tr" data-t-en="Get Started Free" data-t-ar="ابدأ مجانا">Get Started Free</span>
+                            <iconify-icon icon="lucide:arrow-right" class="arr-ico text-lg"></iconify-icon>
+                        </a>
+                        <a href="#services" class="inline-flex items-center gap-2 glass text-white font-medium px-8 py-4 rounded-xl hover:bg-white/15 transition-all">
+                            <iconify-icon icon="lucide:play-circle" class="text-green-400 text-lg"></iconify-icon>
+                            <span class="tr" data-t-en="Watch Demo" data-t-ar="شاهد العرض">Watch Demo</span>
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-8 mt-10 pt-8 border-t border-white/10">
+                        <div><div class="text-2xl font-extrabold text-white">12M+</div><div class="text-xs text-slate-500 tr" data-t-en="Active Users" data-t-ar="مستخدم نشط">Active Users</div></div>
+                        <div class="w-px h-10 bg-white/10"></div>
+                        <div><div class="text-2xl font-extrabold text-white">4.9<span class="text-orange-400">&#9733;</span></div><div class="text-xs text-slate-500 tr" data-t-en="App Rating" data-t-ar="تقييم التطبيق">App Rating</div></div>
+                        <div class="w-px h-10 bg-white/10"></div>
+                        <div><div class="text-2xl font-extrabold text-white">99.9%</div><div class="text-xs text-slate-500 tr" data-t-en="Uptime" data-t-ar="وقت التشغيل">Uptime</div></div>
+                    </div>
+                </div>
+                <div class="relative hidden lg:block">
+                    <div class="floaty relative">
+                        <div class="absolute -inset-4 grad-main rounded-3xl opacity-10 blur-2xl"></div>
+                        <img src="https://picsum.photos/seed/ahli-bank-hero2/600/650.jpg" alt="Banking" class="relative rounded-3xl shadow-2xl w-full object-cover">
+                        <div class="absolute -bottom-6 -right-6 glass rounded-2xl p-4 floaty-d glow-g-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center"><iconify-icon icon="lucide:trending-up" class="text-green-400 text-2xl"></iconify-icon></div>
+                                <div><p class="text-xs text-slate-400 tr" data-t-en="Portfolio Growth" data-t-ar="نمو المحفظة">Portfolio Growth</p><p class="text-lg font-bold text-green-400">+24.5%</p></div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-4 -left-4 glass rounded-2xl p-4 glow-o-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center"><iconify-icon icon="lucide:shield-check" class="text-orange-400 text-sm"></iconify-icon></div>
+                                <p class="text-xs font-bold text-white tr" data-t-en="Bank Grade Security" data-t-ar="أمان مصرفي">Bank Grade Security</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0"><svg viewBox="0 0 1440 60" fill="none" class="w-full"><path d="M0 60V30C240 0 480 0 720 30C960 60 1200 60 1440 30V60H0Z" class="fill-slate-50 dark:fill-slate-950"/></svg></div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="py-24 px-4 md:px-6 dot-bg">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-500/10 rounded-full px-4 py-1.5 mb-4">
+                    <iconify-icon icon="lucide:sparkles" class="text-orange-500 text-sm"></iconify-icon>
+                    <span class="text-xs font-semibold text-orange-600 dark:text-orange-400 tr" data-t-en="Our Services" data-t-ar="خدماتنا">Our Services</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tr" data-t-en="Complete Banking Solutions" data-t-ar="حلول مصرفية متكاملة">Complete Banking Solutions</h2>
+                <p class="text-slate-500 dark:text-slate-400 leading-relaxed tr" data-t-en="Everything you need to manage, grow, and protect your finances." data-ar="كل ما تحتاجه لإدارة أموالك ونموها وحمايتها.">Everything you need to manage, grow, and protect your finances.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features" class="py-24 px-4 md:px-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/5 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-green-500/5 rounded-full blur-[120px]"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 bg-green-100 dark:bg-green-500/10 rounded-full px-4 py-1.5 mb-4">
+                    <iconify-icon icon="lucide:zap" class="text-green-500 text-sm"></iconify-icon>
+                    <span class="text-xs font-semibold text-green-600 dark:text-green-400 tr" data-t-en="Why Choose Us" data-t-ar="لماذا نحن">Why Choose Us</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tr" data-t-en="Built Different, Built Better" data-t-ar="مختلفون وأفضل">Built Different, Built Better</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6" id="featuresGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section id="stats" class="py-24 px-4 md:px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grad-dark rounded-3xl p-10 md:p-16 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-[80px]"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-green-500/10 rounded-full blur-[80px]"></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10 text-center">
+                    <div><div class="text-3xl md:text-4xl font-extrabold text-white mb-1 text-glow-o">12M+</div><p class="text-sm text-slate-400 tr" data-t-en="Active Customers" data-t-ar="عميل نشط">Active Customers</p></div>
+                    <div><div class="text-3xl md:text-4xl font-extrabold text-white mb-1 text-glow-g">480+</div><p class="text-sm text-slate-400 tr" data-t-en="Branches &amp; ATMs" data-t-ar="فرع وجهاز صراف">Branches &amp; ATMs</p></div>
+                    <div><div class="text-3xl md:text-4xl font-extrabold text-white mb-1 text-glow-o">$92B</div><p class="text-sm text-slate-400 tr" data-t-en="Total Assets" data-t-ar="إجمالي الأصول">Total Assets</p></div>
+                    <div><div class="text-3xl md:text-4xl font-extrabold text-white mb-1 text-glow-g">70+</div><p class="text-sm text-slate-400 tr" data-t-en="Years of Trust" data-t-ar="سنة من الثقة">Years of Trust</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== APP ===== -->
+    <section id="app" class="py-24 px-4 md:px-6 bg-slate-100/50 dark:bg-slate-900/50 dot-bg">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute -inset-8 grad-main rounded-[2rem] opacity-5 blur-2xl"></div>
+                    <img src="https://picsum.photos/seed/ahli-app-screen/600/700.jpg" alt="App" class="relative rounded-3xl shadow-2xl w-full object-cover">
+                    <div class="absolute bottom-6 left-6 right-6 glass-l dark:glass rounded-2xl p-5 backdrop-blur-xl">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl grad-main flex items-center justify-center"><iconify-icon icon="lucide:download" class="text-white"></iconify-icon></div>
+                                <div><p class="text-sm font-bold text-slate-900 dark:text-white tr" data-t-en="50K+ Downloads" data-t-ar="+50 ألف تحميل">50K+ Downloads</p><p class="text-xs text-slate-500 tr" data-t-en="This month" data-t-ar="هذا الشهر">This month</p></div>
+                            </div>
+                            <div class="flex items-center gap-1"><iconify-icon icon="lucide:star" class="text-orange-400 text-sm"></iconify-icon><span class="text-sm font-bold text-slate-900 dark:text-white">4.9</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-green-100 dark:bg-green-500/10 rounded-full px-4 py-1.5 mb-4">
+                        <iconify-icon icon="lucide:smartphone" class="text-green-500 text-sm"></iconify-icon>
+                        <span class="text-xs font-semibold text-green-600 dark:text-green-400 tr" data-t-en="Mobile Banking" data-t-ar="الخدمة المصرفية عبر الجوال">Mobile Banking</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tr" data-t-en="Your Bank in Your Pocket" data-t-ar="بنكك في جيبك">Your Bank in Your Pocket</h2>
+                    <p class="text-slate-500 dark:text-slate-400 leading-relaxed mb-8 tr" data-t-en="Download the AlAhli app and enjoy seamless digital banking with instant transfers and smart tools." data-ar="حمّل تطبيق الأهلي واستمتع بتجربة مصرفية رقمية سلسة مع تحويلات فورية وأدوات ذكية.">Download the AlAhli app and enjoy seamless digital banking with instant transfers and smart tools.</p>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-3"><div class="w-6 h-6 rounded-full bg-green-500/10 flex items-center justify-center"><iconify-icon icon="lucide:check" class="text-green-500 text-xs"></iconify-icon></div><span class="text-sm tr" data-t-en="Instant local &amp; international transfers" data-t-ar="تحويلات محلية ودولية فورية">Instant local &amp; international transfers</span></div>
+                        <div class="flex items-center gap-3"><div class="w-6 h-6 rounded-full bg-green-500/10 flex items-center justify-center"><iconify-icon icon="lucide:check" class="text-green-500 text-xs"></iconify-icon></div><span class="text-sm tr" data-t-en="Bill payments &amp; subscription management" data-t-ar="دفع الفواتير وإدارة الاشتراكات">Bill payments &amp; subscription management</span></div>
+                        <div class="flex items-center gap-3"><div class="w-6 h-6 rounded-full bg-green-500/10 flex items-center justify-center"><iconify-icon icon="lucide:check" class="text-green-500 text-xs"></iconify-icon></div><span class="text-sm tr" data-t-en="Full card management &amp; controls" data-t-ar="إدارة كاملة للبطاقات">Full card management &amp; controls</span></div>
+                        <div class="flex items-center gap-3"><div class="w-6 h-6 rounded-full bg-green-500/10 flex items-center justify-center"><iconify-icon icon="lucide:check" class="text-green-500 text-xs"></iconify-icon></div><span class="text-sm tr" data-t-en="AI-powered spending analytics" data-t-ar="تحليلات إنفاق بالذكاء الاصطناعي">AI-powered spending analytics</span></div>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="inline-flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3.5 rounded-xl hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors cta-btn" onclick="return false;">
+                            <iconify-icon icon="lucide:apple" class="text-2xl"></iconify-icon>
+                            <div class="text-right"><p class="text-[10px] opacity-60 tr" data-t-en="Download on" data-t-ar="حمّل من">Download on</p><p class="text-sm font-bold">App Store</p></div>
+                        </a>
+                        <a href="#" class="inline-flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3.5 rounded-xl hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors cta-btn" onclick="return false;">
+                            <iconify-icon icon="lucide:play" class="text-2xl"></iconify-icon>
+                            <div class="text-right"><p class="text-[10px] opacity-60 tr" data-t-en="Get it on" data-t-ar="احصل عليه من">Get it on</p><p class="text-sm font-bold">Google Play</p></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="py-24 px-4 md:px-6">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-500/10 rounded-full px-4 py-1.5 mb-4">
+                    <iconify-icon icon="lucide:help-circle" class="text-orange-500 text-sm"></iconify-icon>
+                    <span class="text-xs font-semibold text-orange-600 dark:text-orange-400 tr" data-t-en="FAQ" data-t-ar="الأسئلة الشائعة">FAQ</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-4 tr" data-t-en="Frequently Asked Questions" data-t-ar="الأسئلة الأكثر شيوعا">Frequently Asked Questions</h2>
+            </div>
+            <div class="space-y-3" id="faqList"></div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="py-24 px-4 md:px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grad-dark rounded-3xl p-12 md:p-16 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-1/4 w-72 h-72 bg-orange-500/15 rounded-full blur-[100px] pulse-g"></div>
+                <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-green-500/15 rounded-full blur-[100px] pulse-g" style="animation-delay:1.5s"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 tr" data-t-en="Ready to Start Your Journey?" data-t-ar="مستعد لبدء رحلتك؟">Ready to Start Your Journey?</h2>
+                    <p class="text-slate-400 leading-relaxed max-w-xl mx-auto mb-8 tr" data-t-en="Join 12 million+ customers who trust AlAhli Bank. Open your free account in under 5 minutes." data-ar="انضم إلى أكثر من 12 مليون عميل يثقون بالأهلي. افتح حسابك المجاني في أقل من 5 دقائق.">Join 12 million+ customers who trust AlAhli Bank. Open your free account in under 5 minutes.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#" class="inline-flex items-center gap-2 grad-main text-white font-bold px-8 py-4 rounded-xl glow-o hover:opacity-90 transition-all shadow-2xl cta-btn">
+                            <span class="tr" data-t-en="Open Free Account" data-t-ar="افتح حسابا مجانا">Open Free Account</span>
+                            <iconify-icon icon="lucide:arrow-right" class="arr-ico text-lg"></iconify-icon>
+                        </a>
+                        <a href="tel:920001000" class="inline-flex items-center gap-2 glass text-white font-medium px-8 py-4 rounded-xl hover:bg-white/15 transition-all">
+                            <iconify-icon icon="lucide:phone" class="text-green-400"></iconify-icon>
+                            <span>920001000</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-slate-900 dark:bg-slate-950 border-t border-slate-800 pt-16 pb-8 px-4 md:px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2.5 mb-4">
+                        <div class="w-10 h-10 rounded-xl grad-main flex items-center justify-center"><iconify-icon icon="lucide:landmark" class="text-white text-xl"></iconify-icon></div>
+                        <span class="font-bold text-white text-lg tr" data-t-en="AlAhli Bank" data-t-ar="البنك الأهلي">AlAhli Bank</span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-6 max-w-xs tr" data-t-en="Your trusted banking partner for over 70 years. Building a smarter, greener financial future." data-ar="شريكك المصرفي الموثوق لأكثر من 70 عاما. نبني مستقبلا ماليا أذكى وأخضر.">Your trusted banking partner for over 70 years. Building a smarter, greener financial future.</p>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-orange-500 transition-colors"><iconify-icon icon="lucide:twitter" class="text-slate-400 text-sm"></iconify-icon></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-orange-500 transition-colors"><iconify-icon icon="lucide:instagram" class="text-slate-400 text-sm"></iconify-icon></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-green-500 transition-colors"><iconify-icon icon="lucide:linkedin" class="text-slate-400 text-sm"></iconify-icon></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-orange-500 transition-colors"><iconify-icon icon="lucide:youtube" class="text-slate-400 text-sm"></iconify-icon></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-4 tr" data-t-en="Accounts" data-t-ar="الحسابات">Accounts</h4>
+                    <ul class="space-y-2"><li><a href="#" class="text-sm text-slate-500 hover:text-orange-400 transition-colors tr" data-t-en="Current" data-t-ar="جاري">Current</a></li><li><a href="#" class="text-sm text-slate-500 hover:text-orange-400 transition-colors tr" data-t-en="Savings" data-t-ar="توفير">Savings</a></li><li><a href="#" class="text-sm text-slate-500 hover:text-orange-400 transition-colors tr" data-t-en="Investment" data-t-ar="استثمار">Investment</a></li><li><a href="#" class="text-sm text-slate-500 hover:text-orange-400 transition-colors tr" data-t-en="Kids" data-t-ar="أطفال">Kids</a></li></ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-4 tr" data-t-en="Products" data-t-ar="المنتجات">Products</h4>
+                    <ul class="space-y-2"><li><a href="#" class="text-sm text-slate-500 hover:text-green-400 transition-colors tr" data-t-en="Credit Cards" data-t-ar="بطاقات ائتمان">Credit Cards</a></li><li><a href="#" class="text-sm text-slate-500 hover:text-green-400 transition-colors tr" data-t-en="Home Finance" data-t-ar="تمويل عقاري">Home Finance</a></li><li><a href="#" class="text-sm text-slate-500 hover:text-green-400 transition-colors tr" data-t-en="Personal Loan" data-t-ar="قرض شخصي">Personal Loan</a></li><li><a href="#" class="text-sm text-slate-500 hover:text-green-400 transition-colors tr" data-t-en="Car Finance" data-t-ar="تمويل سيارات">Car Finance</a></li></ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-4 tr" data-t-en="Company" data-t-ar="الشركة">Company</h4>
+                    <ul class="space-y-2"><li><a href="#" class="text-sm text-slate-500 hover:text-orange-400 transition-colors tr" data-t-en="About Us" data-t-ar="من نحن">About Us</a></li><li><a href="#" class="text-sm text-slate-500 hover:text-orange-400 transition-colors tr" data-t-en="Careers" data-t-ar="وظائف">Careers</a></li><li><a href="#" class="text-sm text-slate-500 hover:text-orange-400 transition-colors tr" data-t-en="Contact" data-t-ar="تواصل">Contact</a></li><li><a href="#" class="text-sm text-slate-500 hover:text-orange-400 transition-colors tr" data-t-en="News" data-t-ar="أخبار">News</a></li></ul>
+                </div>
+            </div>
+            <hr class="border-slate-800 mb-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-slate-600 tr" data-t-en="&copy; 2025 AlAhli Bank. Licensed by SAMA. All rights reserved." data-t-ar="&copy; 2025 البنك الأهلي. مرخص من مؤسسة النقد. جميع الحقوق محفوظة.">&copy; 2025 AlAhli Bank. Licensed by SAMA. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="#" class="text-xs text-slate-600 hover:text-orange-400 transition-colors tr" data-t-en="Privacy" data-t-ar="الخصوصية">Privacy</a>
+                    <a href="#" class="text-xs text-slate-600 hover:text-orange-400 transition-colors tr" data-t-en="Terms" data-t-ar="الشروط">Terms</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== AI CHAT WIDGET ===== -->
+    <div class="fixed bottom-6 left-6 z-50" id="aiWidget">
+        <div id="aiPanel" class="absolute bottom-16 left-0 w-[360px] max-w-[calc(100vw-2rem)] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div class="grad-main p-4 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center"><iconify-icon icon="lucide:bot" class="text-white text-xl"></iconify-icon></div>
+                <div class="flex-1"><p class="text-sm font-bold text-white tr" data-t-en="AlAhli AI Assistant" data-t-ar="مساعد الأهلي الذكي">AlAhli AI Assistant</p><div class="flex items-center gap-1.5"><div class="w-2 h-2 rounded-full bg-green-300 animate-pulse"></div><span class="text-[11px] text-white/80 tr" data-t-en="Online" data-t-ar="متصل">Online</span></div></div>
+                <button type="button" id="chatClose" class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"><iconify-icon icon="lucide:x" class="text-white text-sm"></iconify-icon></button>
+            </div>
+            <div id="chatMsgs" class="h-72 overflow-y-auto p-4 space-y-3 no-sb bg-slate-50 dark:bg-slate-950"></div>
+            <div class="px-4 py-2 flex gap-2 overflow-x-auto no-sb border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900" id="quickBtns"></div>
+            <div class="p-3 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+                <div class="flex items-center gap-2">
+                    <input id="chatIn" type="text" class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-sm rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-orange-500/30 transition-all" placeholder="Type your question...">
+                    <button type="button" id="chatSend" class="w-10 h-10 rounded-xl grad-main flex items-center justify-center glow-o-sm hover:opacity-90 transition-opacity flex-shrink-0"><iconify-icon icon="lucide:send" class="text-white text-sm"></iconify-icon></button>
+                </div>
+            </div>
+        </div>
+        <button type="button" id="aiOpen" class="w-16 h-16 rounded-2xl grad-main flex items-center justify-center glow-o shadow-2xl hover:scale-105 transition-transform relative group">
+            <iconify-icon icon="lucide:bot" class="text-white text-2xl"></iconify-icon>
+            <div class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-green-400 border-2 border-white dark:border-slate-900 animate-pulse"></div>
+        </button>
+    </div>
+
+    <!-- Back to Top -->
+    <button type="button" id="btt" class="fixed bottom-6 right-6 w-11 h-11 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-orange-50 dark:hover:bg-slate-700 z-40">
+        <iconify-icon icon="lucide:arrow-up" class="text-slate-600 dark:text-slate-300 text-lg"></iconify-icon>
+    </button>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3.5 rounded-xl shadow-2xl -translate-y-4 opacity-0 transition-all duration-300 z-[70] flex items-center gap-3 max-w-sm pointer-events-none">
+        <iconify-icon icon="lucide:check-circle" class="text-green-400 dark:text-green-500 text-lg flex-shrink-0"></iconify-icon>
+        <span id="toastTxt" class="text-sm font-medium"></span>
+    </div>
+
+    <script>
+    (function(){
+        // ========== DATA ==========
+        var servicesData = [
+            {icon:'lucide:wallet',color:'orange',en:'Current Accounts',ar:'الحسابات الجارية',enD:'Zero-balance accounts with instant access and smart spending insights.',arD:'حسابات برصيد صفر مع وصول فوري ورؤى ذكية للإنفاق.'},
+            {icon:'lucide:piggy-bank',color:'green',en:'Savings Accounts',ar:'حسابات التوفير',enD:'Grow your wealth with competitive interest rates and flexible plans.',arD:'نم ثروتك بعوائد تنافسية وخطط توفير مرنة.'},
+            {icon:'lucide:credit-card',color:'orange',en:'Credit Cards',ar:'البطاقات الائتمانية',enD:'Premium cards with exclusive rewards, cashback, and travel benefits.',arD:'بطاقات مميزة بمكافآت حصرية واسترداد نقدي ومزايا سفر.'},
+            {icon:'lucide:home',color:'green',en:'Home Finance',ar:'التمويل العقاري',enD:'Own your dream home with flexible plans up to 30 years.',arD:'أمتلك منزل أحلامك بخطط مرنة حتى 30 سنة.'},
+            {icon:'lucide:building-2',color:'orange',en:'Business Banking',ar:'الخدمات التجارية',enD:'Comprehensive solutions for SMEs with dedicated managers.',arD:'حلول شاملة للشركات الصغيرة مع مديري علاقات مخصصين.'},
+            {icon:'lucide:globe',color:'green',en:'Global Transfers',ar:'التحويلات الدولية',enD:'Send money worldwide instantly through our global network.',arD:'أرسل أموالك حول العالم فورا عبر شبكتنا العالمية.'}
+        ];
+
+        var featuresData = [
+            {icon:'lucide:smartphone',color:'orange',en:'Digital-First Banking',ar:'تمويل رقمي أولا',enD:'Manage everything from your phone — accounts, cards, investments.',arD:'أدر كل شيء من هاتفك — حسابات وبطاقات واستثمارات.'},
+            {icon:'lucide:shield-check',color:'green',en:'Military-Grade Security',ar:'أمان بمعايير عسكرية',enD:'256-bit encryption, biometric auth, and real-time fraud monitoring.',arD:'تشفير 256 بت ومصادقة بيومترية ومراقبة احتيال فورية.'},
+            {icon:'lucide:headphones',color:'green',en:'24/7 Smart Support',ar:'دعم ذكي على مدار الساعة',enD:'AI-powered chatbot and human agents available round the clock.',arD:'روبوت محادثة ذكي ووكلاء بشريون متاحون على مدار الساعة.'},
+            {icon:'lucide:leaf',color:'orange',en:'Green Banking',ar:'تمويل أخضر',enD:'Paperless transactions, carbon-neutral operations, and ESG investments.',arD:'معاملات بلا ورق وعمليات محايدة الكربون واستثمارات مستدامة.'}
+        ];
+
+        var faqData = [
+            {en:'How do I open a new account?',ar:'كيف أفتح حسابا جديدا؟',enD:'You can open an account online through our app in minutes, or visit any branch with your national ID. The process is quick, paperless, and free.',arD:'يمكنك فتح حساب عبر التطبيق في دقائق أو زيارة أي فرع مع هويتك. العملية سريعة وبلا ورق ومجانية.'},
+            {en:'What is the minimum balance for savings?',ar:'ما هو الحد الأدنى لحساب التوفير؟',enD:'The minimum balance starts from just 1,000 SAR with competitive profit rates that increase based on your balance tier.',arD:'يبدأ الحد الأدنى من 1000 ريال فقط مع أرباح تنافسية تزداد حسب شريحة رصيدك.'},
+            {en:'Can I make international transfers via the app?',ar:'هل يمكنني تحويل أموال دوليا عبر التطبيق؟',enD:'Yes! Send money to 200+ countries instantly with competitive exchange rates and low fees.',arD:'نعم! أرسل أموالك إلى أكثر من 200 دولة فورا بأسعار صرف تنافسية ورسوم منخفضة.'},
+            {en:'How do I contact customer support?',ar:'كيف أتواصل مع خدمة العملاء؟',enD:'Reach us 24/7 at 920001000, via in-app chat, or through our AI assistant on this page.',arD:'تواصل معنا على مدار الساعة على الرقم 920001000 أو عبر الدردشة في التطبيق أو مساعد الذكاء الاصطناعي.'}
+        ];
+
+        var quickData = [
+            {en:'Open Account',ar:'فتح حساب',enR:'To open an account, visit any branch with your ID or use our app for instant online opening. Want step-by-step guidance?',arR:'لفتح حساب زر أي فرع مع هويتك أو استخدم التطبيق لفتح حساب فوري. هل تريد إرشادا خطوة بخطوة؟'},
+            {en:'Card Info',ar:'معلومات البطاقات',enR:'We offer Visa Classic, Platinum, and World Elite cards with up to 5% cashback and travel perks. Which interests you?',arR:'نقدم بطاقات كلاسيك وبلاتينيوم وورلد إليت مع استرداد نقدي حتى 5% ومزايا سفر. أيها يهمك؟'},
+            {en:'Loan Rates',ar:'أسعار القروض',enR:'Personal loans from 2.5% APR, home finance from 3.2% APR. Rates depend on your profile. Want a personalized quote?',arR:'قروض شخصية من 2.5% وتمويل عقاري من 3.2%. الأسعار تعتمد على ملفك. هل تريد عرضا مخصصا؟'}
+        ];
+
+        var aiResp = {
+            en:{account:'Opening an account is easy! Use our app or visit any branch. Want guidance?',card:'We offer Classic, Platinum, and World Elite cards with up to 5% cashback. Which one?',loan:'Personal loans from 2.5% APR, home finance from 3.2%. Want a personalized quote?',transfer:'Send money to 200+ countries instantly! Fees from 10 SAR. Available 24/7.',hello:'Hello! Welcome to AlAhli Bank. How can I help you today?',def:"I can help with accounts, cards, loans, transfers, and more. Try the quick buttons below!" },
+            ar:{account:'فتح حساب سهل! استخدم التطبيق أو زر أي فرع. هل تريد إرشادا؟',card:'نقدم كلاسيك وبلاتينيوم وورلد إليت مع استرداد نقدي حتى 5%. أي واحدة؟',loan:'قروض شخصية من 2.5% وتمويل عقاري من 3.2%. هل تريد عرضا مخصصا؟',transfer:'أرسل أموالك لأكثر من 200 دولة فورا! الرسوم من 10 ريال. متاح 24/7.',hello:'مرحبا! أهلا بك في البنك الأهلي. كيف أساعدك اليوم؟',def:'يمكنني المساعدة في الحسابات والبطاقات والقروض والتحويلات. جرب الأزرار السريعة!' }
+        };
+
+        // ========== STATE ==========
+        var isAr = false;
+        var isDark = false;
+
+        // ========== HELPERS ==========
+        var $ = function(sel){ return document.querySelector(sel); };
+        var $$ = function(sel){ return document.querySelectorAll(sel); };
+
+        function toast(msg){
+            var t = $('#toast');
+            $('#toastTxt').textContent = msg;
+            t.style.opacity='1'; t.style.transform='translate(-50%,0)';
+            setTimeout(function(){ t.style.opacity='0'; t.style.transform='translate(-50%,-1rem)'; }, 3000);
+        }
+
+        function getT(el){
+            return isAr ? (el.getAttribute('data-t-ar') || el.textContent) : (el.getAttribute('data-t-en') || el.textContent);
+        }
+
+        // ========== RENDER DYNAMIC SECTIONS ==========
+        function renderServices(){
+            var grid = $('#servicesGrid');
+            grid.innerHTML = '';
+            servicesData.forEach(function(s){
+                var isO = s.color === 'orange';
+                var glowCls = isO ? 'hover:shadow-orange-500/10' : 'hover:shadow-green-500/10';
+                var borderCls = isO ? 'hover:border-orange-300 dark:hover:border-orange-500/30' : 'hover:border-green-300 dark:hover:border-green-500/30';
+                var txtCls = isO ? 'text-orange-500' : 'text-green-500';
+                var bgIcon = isO ? 'from-orange-500 to-orange-600' : 'from-green-500 to-green-600';
+                var glowIcon = isO ? 'glow-o-sm' : 'glow-g-sm';
+                var div = document.createElement('div');
+                div.className = 'scard bg-white dark:bg-slate-900/50 rounded-2xl p-8 border border-slate-200/80 dark:border-slate-800/80 ' + borderCls + ' hover:shadow-xl ' + glowCls + ' cursor-pointer';
+                div.innerHTML = '<div class="w-14 h-14 rounded-2xl bg-gradient-to-br ' + bgIcon + ' flex items-center justify-center mb-6 group-hover:scale-110 transition-transform ' + glowIcon + '"><iconify-icon icon="' + s.icon + '" class="text-white text-2xl"></iconify-icon></div>' +
+                    '<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 tr" data-t-en="' + s.en + '" data-t-ar="' + s.ar + '">' + getT({getAttribute:function(k){return k==='data-t-en'?s.en:s.ar}}) + '</h3>' +
+                    '<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4 tr" data-t-en="' + s.enD + '" data-t-ar="' + s.arD + '">' + getT({getAttribute:function(k){return k==='data-t-en'?s.enD:s.arD}}) + '</p>' +
+                    '<span class="inline-flex items-center gap-1 ' + txtCls + ' text-sm font-semibold group-hover:gap-2 transition-all"><span class="tr" data-t-en="Learn More" data-t-ar="اعرف أكثر">' + (isAr?'اعرف أكثر':'Learn More') + '</span><iconify-icon icon="lucide:arrow-right" class="arr-ico text-sm"></iconify-icon></span>';
+                grid.appendChild(div);
+            });
+        }
+
+        function renderFeatures(){
+            var grid = $('#featuresGrid');
+            grid.innerHTML = '';
+            featuresData.forEach(function(f){
+                var isO = f.color === 'orange';
+                var txtCls = isO ? 'text-orange-500' : 'text-green-500';
+                var bgIco = isO ? 'bg-orange-500/10 dark:bg-orange-500/20' : 'bg-green-500/10 dark:bg-green-500/20';
+                var shadowCls = isO ? 'hover:shadow-orange-500/5' : 'hover:shadow-green-500/5';
+                var div = document.createElement('div');
+                div.className = 'group flex items-start gap-5 p-8 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/50 dark:bg-slate-900/50 hover:bg-white dark:hover:bg-slate-900 hover:shadow-xl ' + shadowCls + ' transition-all duration-300';
+                div.innerHTML = '<div class="w-14 h-14 rounded-2xl ' + bgIco + ' flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"><iconify-icon icon="' + f.icon + '" class="' + txtCls + ' text-2xl"></iconify-icon></div>' +
+                    '<div><h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 tr" data-t-en="' + f.en + '" data-t-ar="' + f.ar + '">' + getT({getAttribute:function(k){return k==='data-t-en'?f.en:f.ar}}) + '</h3>' +
+                    '<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed tr" data-t-en="' + f.enD + '" data-t-ar="' + f.arD + '">' + getT({getAttribute:function(k){return k==='data-t-en'?f.enD:f.arD}}) + '</p></div>';
+                grid.appendChild(div);
+            });
+        }
+
+        function renderFAQ(){
+            var list = $('#faqList');
+            list.innerHTML = '';
+            faqData.forEach(function(q){
+                var det = document.createElement('details');
+                det.className = 'group border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900/50 overflow-hidden';
+                det.innerHTML = '<summary class="flex items-center justify-between cursor-pointer p-6"><span class="font-semibold text-slate-900 dark:text-white text-sm pr-4 tr" data-t-en="' + q.en + '" data-t-ar="' + q.ar + '">' + getT({getAttribute:function(k){return k==='data-t-en'?q.en:q.ar}}) + '</span><iconify-icon icon="lucide:chevron-down" class="text-slate-400 text-lg transition-transform group-open:rotate-180 flex-shrink-0"></iconify-icon></summary>' +
+                    '<div class="px-6 pb-6 text-sm text-slate-500 dark:text-slate-400 leading-relaxed tr" data-t-en="' + q.enD + '" data-t-ar="' + q.arD + '">' + getT({getAttribute:function(k){return k==='data-t-en'?q.enD:q.arD}}) + '</div>';
+                list.appendChild(det);
+            });
+        }
+
+        function renderQuickBtns(){
+            var c = $('#quickBtns');
+            c.innerHTML = '';
+            quickData.forEach(function(q, i){
+                var isO = i % 2 === 0;
+                var cls = isO ? 'border-orange-200 dark:border-orange-500/20 text-orange-600 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-500/10' : 'border-green-200 dark:border-green-500/20 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-500/10';
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'quick-btn flex-shrink-0 text-xs border ' + cls + ' px-3 py-1.5 rounded-full transition-colors';
+                btn.textContent = isAr ? q.ar : q.en;
+                btn.setAttribute('data-idx', i);
+                btn.addEventListener('click', function(){
+                    var idx = parseInt(this.getAttribute('data-idx'));
+                    var qi = quickData[idx];
+                    addMsg(isAr ? qi.ar : qi.en, true);
+                    showTyping(function(){ addMsg(isAr ? qi.arR : qi.enR, false); });
+                });
+                c.appendChild(btn);
+            });
+        }
+
+        // ========== TRANSLATE ALL ==========
+        function translateAll(){
+            $$('.tr').forEach(function(el){
+                el.textContent = getT(el);
+            });
+            var inp = $('#chatIn');
+            inp.placeholder = isAr ? 'اكتب سؤالك...' : 'Type your question...';
+            $$('.arr-ico').forEach(function(ic){
+                ic.setAttribute('icon', isAr ? 'lucide:arrow-left' : 'lucide:arrow-right');
+            });
+            renderServices();
+            renderFeatures();
+            renderFAQ();
+            renderQuickBtns();
+        }
+
+        // ========== DARK MODE ==========
+        function applyDark(){
+            if(isDark){
+                document.documentElement.classList.add('dark');
+                $$('.sun-ico').forEach(function(e){ e.style.display='none'; });
+                $$('.moon-ico').forEach(function(e){ e.style.display='inline-block'; });
+            } else {
+                document.documentElement.classList.remove('dark');
+                $$('.sun-ico').forEach(function(e){ e.style.display='inline-block'; });
+                $$('.moon-ico').forEach(function(e){ e.style.display='none'; });
+            }
+        }
+
+        // ========== CHAT ==========
+        function addMsg(text, isUser){
+            var div = document.createElement('div');
+            div.className = 'flex gap-2' + (isUser ? ' justify-end' : '');
+            if(isUser){
+                div.innerHTML = '<div class="bg-gradient-to-br from-orange-500 to-green-500 text-white rounded-2xl rounded-tr-md px-4 py-3 max-w-[80%]"><p class="text-sm">' + text + '</p></div>';
+            } else {
+                div.innerHTML = '<div class="w-7 h-7 rounded-lg grad-main flex items-center justify-center flex-shrink-0 mt-1"><iconify-icon icon="lucide:bot" class="text-white text-xs"></iconify-icon></div><div class="rounded-2xl rounded-tl-md px-4 py-3 max-w-[80%] bg-orange-50 dark:bg-orange-500/5"><p class="text-sm text-slate-700 dark:text-slate-300">' + text + '</p></div>';
+            }
+            var box = $('#chatMsgs');
+            box.appendChild(div);
+            box.scrollTop = box.scrollHeight;
+        }
+
+        function showTyping(cb){
+            var div = document.createElement('div');
+            div.className = 'flex gap-2 typing-ind';
+            div.innerHTML = '<div class="w-7 h-7 rounded-lg grad-main flex items-center justify-center flex-shrink-0 mt-1"><iconify-icon icon="lucide:bot" class="text-white text-xs"></iconify-icon></div><div class="rounded-2xl rounded-tl-md px-4 py-3 bg-orange-50 dark:bg-orange-500/5"><div class="flex gap-1"><div class="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay:0ms"></div><div class="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay:150ms"></div><div class="w-2 h-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay:300ms"></div></div></div>';
+            var box = $('#chatMsgs');
+            box.appendChild(div);
+            box.scrollTop = box.scrollHeight;
+            setTimeout(function(){ div.remove(); if(cb) cb(); }, 1000);
+        }
+
+        function getAIReply(text){
+            var low = text.toLowerCase();
+            var lang = isAr ? 'ar' : 'en';
+            var r = aiResp[lang];
+            if(low.includes('account') || low.includes('حساب')) return r.account;
+            if(low.includes('card') || low.includes('بطاق')) return r.card;
+            if(low.includes('loan') || low.includes('قرض')) return r.loan;
+            if(low.includes('transfer') || low.includes('تحويل')) return r.transfer;
+            if(low.includes('hello') || low.includes('hi') || low.includes('مرحب')) return r.hello;
+            return r.def;
+        }
+
+        function sendChat(){
+            var inp = $('#chatIn');
+            var text = inp.value.trim();
+            if(!text) return;
+            addMsg(text, true);
+            inp.value = '';
+            var reply = getAIReply(text);
+            showTyping(function(){ addMsg(reply, false); });
+        }
+
+        // ========== INIT ==========
+        function init(){
+            // Check saved dark mode
+            if(localStorage.getItem('ahliDark') === 'true'){
+                isDark = true;
+            }
+            applyDark();
+
+            // Render dynamic content
+            renderServices();
+            renderFeatures();
+            renderFAQ();
+            renderQuickBtns();
+
+            // Initial chat message
+            addMsg(isAr ? 'مرحبا! أنا مساعد الأهلي الذكي. كيف أساعدك اليوم؟' : 'Hello! I\'m your AlAhli AI assistant. How can I help you today?', false);
+
+            // ---- DARK TOGGLE ----
+            $('#darkToggle').addEventListener('click', function(){
+                isDark = !isDark;
+                localStorage.setItem('ahliDark', isDark);
+                applyDark();
+            });
+
+            // ---- LANG TOGGLE ----
+            $('#langToggle').addEventListener('click', function(){
+                isAr = !isAr;
+                document.documentElement.lang = isAr ? 'ar' : 'en';
+                document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+                translateAll();
+                // Re-add welcome msg
+                var box = $('#chatMsgs');
+                box.innerHTML = '';
+                addMsg(isAr ? 'مرحبا! أنا مساعد الأهلي الذكي. كيف أساعدك اليوم؟' : 'Hello! I\'m your AlAhli AI assistant. How can I help you today?', false);
+            });
+
+            // ---- MOBILE MENU ----
+            $('#mobMenuBtn').addEventListener('click', function(){
+                $('#mobMenu').classList.add('open');
+                $('#mobOverlay').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+            function closeMobMenu(){
+                $('#mobMenu').classList.remove('open');
+                $('#mobOverlay').classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+            $('#mobClose').addEventListener('click', closeMobMenu);
+            $('#mobOverlay').addEventListener('click', closeMobMenu);
+            $$('.mob-link').forEach(function(l){ l.addEventListener('click', closeMobMenu); });
+
+            // ---- AI CHAT ----
+            var panel = $('#aiPanel');
+            $('#aiOpen').addEventListener('click', function(){
+                if(panel.classList.contains('show')){
+                    panel.classList.remove('show');
+                    setTimeout(function(){ panel.style.display='none'; }, 300);
+                } else {
+                    panel.style.display='block';
+                    requestAnimationFrame(function(){
+                        requestAnimationFrame(function(){ panel.classList.add('show'); });
+                    });
+                }
+            });
+            $('#chatClose').addEventListener('click', function(){
+                panel.classList.remove('show');
+                setTimeout(function(){ panel.style.display='none'; }, 300);
+            });
+            $('#chatSend').addEventListener('click', sendChat);
+            $('#chatIn').addEventListener('keydown', function(e){ if(e.key==='Enter') sendChat(); });
+
+            // ---- CTA BUTTONS ----
+            $$('.cta-btn').forEach(function(btn){
+                btn.addEventListener('click', function(e){
+                    e.preventDefault();
+                    toast(isAr ? 'سيتم توجيهك لصفحة فتح الحساب...' : 'Redirecting to account opening page...');
+                });
+            });
+
+            // ---- BACK TO TOP ----
+            var btt = $('#btt');
+            window.addEventListener('scroll', function(){
+                if(window.scrollY > 500){
+                    btt.style.opacity='1'; btt.style.pointerEvents='auto';
+                } else {
+                    btt.style.opacity='0'; btt.style.pointerEvents='none';
+                }
+            });
+            btt.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+            // ---- NAV SHADOW ----
+            window.addEventListener('scroll', function(){
+                var nav = $('#navbar');
+                if(window.scrollY > 10){
+                    nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.08)';
+                } else {
+                    nav.style.boxShadow = 'none';
+                }
+            });
+
+            // ---- SMOOTH SCROLL ----
+            $$('a[href^="#"]').forEach(function(a){
+                a.addEventListener('click', function(e){
+                    var href = this.getAttribute('href');
+                    if(href === '#') return;
+                    e.preventDefault();
+                    var target = document.querySelector(href);
+                    if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+                });
+            });
+        }
+
+        // Run when DOM is ready
+        if(document.readyState === 'loading'){
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+</body>
+</html>
